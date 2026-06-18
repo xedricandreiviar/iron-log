@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Iron Log">
+<meta name="theme-color" content="#15140F">
+<title>Iron Log</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACw0lEQVR4nO3cMW7TYBiA4Raxd2k3pk4MdOQYnKDn4wQcgxEGpkwchCFSFSHeyFJs5xN5nsmKKuf/P71yHCvq/dPjwx38y7trL4C5xEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3q91oh9fn48HL6+H0+O1zk/ZbvLrXDne1rTwdday6eRXiOP8OvSxna0nf2kcS1agjy3sMPmL4lj+3vpY1z6T922FJA6SOEjiIK32EGy5b88fjgdfDr9Pj/dfyWQTprT3leNtnwtfv01DprRrHOf3po+jOVPaL44lu9LHqCmNuyG95T6m7X1cHMwhDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYN0hV+CLfHr5/drL2FvHz99vvYS/jbxynGDZdyN3PXEOBhCHCRxkMRBEgdJHCRxkMRBmhjHwGeFOxi466GPzwdO6gZNvHIwhDhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0rg4bvn/XE/b+35xLNn5tOnsb9SUdr1ynN+VMo7mTGnvj5XamzJODZnSFX4JdrpDTZQJUxp3Q8oc4iCJgyQO0kVxvLweVv9Llthn8pdeOZa8tzK2sMPkV/hYOb8CZWxn68mvc89R61DG1jad/P3T48PlZ+G/5NsKSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQfoD+4eFpsCd7VwAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACw0lEQVR4nO3cMW7TYBiA4Raxd2k3pk4MdOQYnKDn4wQcgxEGpkwchCFSFSHeyFJs5xN5nsmKKuf/P71yHCvq/dPjwx38y7trL4C5xEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3q91oh9fn48HL6+H0+O1zk/ZbvLrXDne1rTwdday6eRXiOP8OvSxna0nf2kcS1agjy3sMPmL4lj+3vpY1z6T922FJA6SOEjiIK32EGy5b88fjgdfDr9Pj/dfyWQTprT3leNtnwtfv01DprRrHOf3po+jOVPaL44lu9LHqCmNuyG95T6m7X1cHMwhDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYN0hV+CLfHr5/drL2FvHz99vvYS/jbxynGDZdyN3PXEOBhCHCRxkMRBEgdJHCRxkMRBmhjHwGeFOxi466GPzwdO6gZNvHIwhDhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0rg4bvn/XE/b+35xLNn5tOnsb9SUdr1ynN+VMo7mTGnvj5XamzJODZnSFX4JdrpDTZQJUxp3Q8oc4iCJgyQO0kVxvLweVv9Llthn8pdeOZa8tzK2sMPkV/hYOb8CZWxn68mvc89R61DG1jad/P3T48PlZ+G/5NsKSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQfoD+4eFpsCd7VwAAAAASUVORK5CYII=">
+<style>
+
+:root {
+  --bg:#15140F; --panel:#1E1D16; --panel2:#26241A; --chalk:#EDE8DA; --chalkDim:#9A9586;
+  --rust:#C8362B; --rustDim:#7A231C; --brass:#E8B931; --line:#33321F;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin:0; padding:0; background:var(--bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--chalk);
+  min-height: 100vh;
+}
+#app {
+  min-height: 100vh;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  display: flex; flex-direction: column;
+}
+.font-display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
+.font-mono { font-family: ui-monospace, 'SF Mono', 'Menlo', 'Roboto Mono', monospace; }
+.brandtitle { font-size: 1.5rem; letter-spacing: 0.06em; }
+.eyebrow { font-size: 0.72rem; color: var(--chalkDim); letter-spacing: 0.08em; text-transform: uppercase; }
+.flex { display: flex; } .flex-col { flex-direction: column; } .flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; } .items-end { align-items: flex-end; }
+.justify-between { justify-content: space-between; } .justify-center { justify-content: center; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+.topbar { padding: 18px 16px 10px; display:flex; align-items:center; justify-content:space-between; }
+.screen { padding: 4px 16px 16px; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+.pill { background: var(--panel2); color: var(--chalkDim); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 13px; font-size: 0.78rem; cursor: pointer; }
+.pill.active { background: var(--rust); color: var(--chalk); border-color: var(--rust); }
+.chip { display:flex; align-items:center; gap:6px; background: var(--panel2); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; color: var(--chalk); }
+.chip button { background: none; border: none; color: var(--chalkDim); display:flex; cursor:pointer; padding:0; font-size: 0.9rem; }
+.btn-primary { background: var(--rust); color: var(--chalk); border: none; border-radius: 12px; padding: 10px 16px;
+  font-weight: 600; font-size: 0.85rem; display:flex; align-items:center; cursor: pointer; }
+.btn-primary:active { background: var(--rustDim); }
+.btn-ghost { background: transparent; color: var(--chalk); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 16px; font-size: 0.85rem; display:flex; align-items:center; cursor: pointer; }
+.btn-finish { width: 100%; background: var(--brass); color: #15140F; border: none; border-radius: 14px;
+  padding: 14px; font-weight: 700; font-size: 0.92rem; margin-top: 6px; cursor: pointer; }
+.iconbtn { background: none; border: none; display:flex; align-items:center; cursor: pointer; padding: 4px; font-size: 0.8rem; }
+.text-input { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; color: var(--chalk);
+  padding: 9px 11px; font-size: 0.85rem; font-family: inherit; width: 100%; }
+.text-input:focus { outline: 1px solid var(--rust); }
+.stepper-label { font-size: 0.62rem; color: var(--chalkDim); letter-spacing: 0.08em; margin-bottom: 3px; }
+.stepper-row { display:flex; align-items:center; background: var(--panel2); border-radius: 10px; border: 1px solid var(--line); }
+.stepper-row button { background:none; border:none; color: var(--chalk); width: 28px; height: 32px; font-size: 1.1rem; cursor:pointer; }
+.stepper-row input { width: 48px; background: none; border: none; color: var(--chalk); text-align: center;
+  font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.9rem; }
+.stepper-row input:focus { outline: none; }
+.navbar { display:flex; border-top: 1px solid var(--line); background: var(--panel); }
+.navitem { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding: 10px 0 12px;
+  background:none; border:none; color: var(--chalkDim); font-size: 0.66rem; cursor:pointer; }
+.navitem.active { color: var(--brass); }
+.navicon { font-size: 1.15rem; }
+.banner { margin: 0 16px 10px; background: var(--rustDim); border-radius: 12px; padding: 8px 12px;
+  display:flex; align-items:center; justify-content:space-between; font-size:0.78rem; cursor:pointer; color: var(--chalk); }
+::-webkit-scrollbar { width: 0; height: 0; }
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function () {
+  'use strict';
+
+  var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  var DAY_FULL = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+
+  var DEFAULT_TEMPLATES = {
+    Push: [
+      { id: 'ps1', name: 'Bench Press', sets: 3, reps: '6-10' },
+      { id: 'ps2', name: 'Overhead Press', sets: 3, reps: '8-10' },
+      { id: 'ps3', name: 'Incline Dumbbell Press', sets: 3, reps: '8-12' },
+      { id: 'ps4', name: 'Lateral Raise', sets: 3, reps: '12-15' },
+      { id: 'ps5', name: 'Triceps Pushdown', sets: 3, reps: '10-12' }
+    ],
+    Pull: [
+      { id: 'pl1', name: 'Deadlift', sets: 3, reps: '5-8' },
+      { id: 'pl2', name: 'Pull-Up', sets: 3, reps: '6-10' },
+      { id: 'pl3', name: 'Barbell Row', sets: 3, reps: '8-10' },
+      { id: 'pl4', name: 'Lat Pulldown', sets: 3, reps: '10-12' },
+      { id: 'pl5', name: 'Bicep Curl', sets: 3, reps: '10-12' }
+    ],
+    Legs: [
+      { id: 'lg1', name: 'Squat', sets: 4, reps: '6-10' },
+      { id: 'lg2', name: 'Romanian Deadlift', sets: 3, reps: '8-10' },
+      { id: 'lg3', name: 'Leg Press', sets: 3, reps: '10-12' },
+      { id: 'lg4', name: 'Leg Curl', sets: 3, reps: '10-12' },
+      { id: 'lg5', name: 'Calf Raise', sets: 3, reps: '12-15' }
+    ],
+    Upper: [
+      { id: 'up1', name: 'Bench Press', sets: 3, reps: '6-10' },
+      { id: 'up2', name: 'Overhead Press', sets: 3, reps: '8-10' },
+      { id: 'up3', name: 'Barbell Row', sets: 3, reps: '8-10' },
+      { id: 'up4', name: 'Lat Pulldown', sets: 3, reps: '10-12' },
+      { id: 'up5', name: 'Bicep Curl', sets: 3, reps: '10-12' },
+      { id: 'up6', name: 'Triceps Pushdown', sets: 3, reps: '10-12' }
+    ],
+    Lower: [
+      { id: 'lo1', name: 'Squat', sets: 4, reps: '6-10' },
+      { id: 'lo2', name: 'Deadlift', sets: 3, reps: '5-8' },
+      { id: 'lo3', name: 'Leg Press', sets: 3, reps: '10-12' },
+      { id: 'lo4', name: 'Leg Curl', sets: 3, reps: '10-12' },
+      { id: 'lo5', name: 'Calf Raise', sets: 3, reps: '12-15' }
+    ]
+  };
+
+  var DEFAULT_SCHEDULE = { Mon: 'Push', Tue: 'Pull', Wed: 'Legs', Thu: 'Rest', Fri: 'Push', Sat: 'Pull', Sun: 'Rest' };
+
+  function uid() { return 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2); }
+  function todayKey() { return DAYS[(new Date().getDay() + 6) % 7]; }
+  function todayDateStr() { return new Date().toISOString().slice(0, 10); }
+  function round1(n) { return Math.round(n * 10) / 10; }
+  function fmtClock(s) { var m = Math.floor(s / 60); var sec = s % 60; return m + ':' + (sec < 10 ? '0' : '') + sec; }
+  function fmtDate(iso) { var d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }); }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function typeSlug(name) { return String(name).replace(/[^a-zA-Z0-9_-]/g, '_'); }
+  function cloneTemplates(t) { return JSON.parse(JSON.stringify(t)); }
+
+  /* ---------------- state ---------------- */
+  var state = loadState();
+  var ui = { tab: 'today', overrideType: null, openLogs: {}, addFormOpen: {}, armed: {} };
+  var timer = { duration: state.lastTimerDuration || 90, remaining: state.lastTimerDuration || 90, running: false, flash: false, intervalId: null };
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem('ironlog-data');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        return {
+          schedule: parsed.schedule || Object.assign({}, DEFAULT_SCHEDULE),
+          templates: parsed.templates || cloneTemplates(DEFAULT_TEMPLATES),
+          logs: parsed.logs || [],
+          draft: parsed.draft || null,
+          lastTimerDuration: parsed.lastTimerDuration || 90
+        };
+      }
+    } catch (e) { /* ignore */ }
+    return { schedule: Object.assign({}, DEFAULT_SCHEDULE), templates: cloneTemplates(DEFAULT_TEMPLATES), logs: [], draft: null, lastTimerDuration: 90 };
+  }
+  function saveState() {
+    try { localStorage.setItem('ironlog-data', JSON.stringify(state)); } catch (e) { /* ignore */ }
+  }
+
+  if (state.draft && state.draft.date !== todayDateStr()) { state.draft = null; saveState(); }
+
+  /* ---------------- derived helpers ---------------- */
+  function getBest(name) {
+    var best = null;
+    state.logs.forEach(function (l) {
+      l.exercises.forEach(function (e) {
+        if (e.name === name) {
+          e.sets.forEach(function (s) {
+            if (!best || s.weight > best.weight || (s.weight === best.weight && s.reps > best.reps)) best = { weight: s.weight, reps: s.reps };
+          });
+        }
+      });
+    });
+    return best;
+  }
+  function getLast(name) {
+    for (var i = 0; i < state.logs.length; i++) {
+      var l = state.logs[i];
+      var e = null;
+      for (var j = 0; j < l.exercises.length; j++) { if (l.exercises[j].name === name) { e = l.exercises[j]; break; } }
+      if (e) return { date: l.date, sets: e.sets };
+    }
+    return null;
+  }
+  function findExerciseById(id) {
+    var types = Object.keys(state.templates);
+    for (var i = 0; i < types.length; i++) {
+      var arr = state.templates[types[i]];
+      for (var j = 0; j < arr.length; j++) { if (arr[j].id === id) return arr[j]; }
+    }
+    return null;
+  }
+  function getActiveType() {
+    var dayKey = todayKey();
+    var scheduled = state.schedule[dayKey] || 'Rest';
+    return ui.overrideType || scheduled;
+  }
+
+  /* ---------------- mutations ---------------- */
+  function logSet(exercise, weight, reps) {
+    var activeType = getActiveType();
+    var dayKey = todayKey();
+    if (!(state.draft && state.draft.date === todayDateStr() && state.draft.type === activeType)) {
+      state.draft = { date: todayDateStr(), dayKey: dayKey, type: activeType, entries: {} };
+    }
+    var arr = state.draft.entries[exercise.id] ? state.draft.entries[exercise.id].slice() : [];
+    arr.push({ weight: Number(weight), reps: Number(reps) });
+    state.draft.entries[exercise.id] = arr;
+    saveState();
+    renderApp();
+  }
+  function removeSet(exerciseId, idx) {
+    if (!state.draft) return;
+    var arr = (state.draft.entries[exerciseId] || []).slice();
+    arr.splice(idx, 1);
+    state.draft.entries[exerciseId] = arr;
+    saveState();
+    renderApp();
+  }
+  function finishWorkout() {
+    if (!state.draft) return;
+    var exList = state.templates[state.draft.type] || [];
+    var exercises = [];
+    exList.forEach(function (e) {
+      if (state.draft.entries[e.id] && state.draft.entries[e.id].length > 0) {
+        exercises.push({ name: e.name, sets: state.draft.entries[e.id] });
+      }
+    });
+    if (exercises.length === 0) { state.draft = null; saveState(); renderApp(); return; }
+    var entry = { id: uid(), date: state.draft.date, dayKey: state.draft.dayKey, type: state.draft.type, exercises: exercises };
+    state.logs.unshift(entry);
+    state.draft = null;
+    saveState();
+    renderApp();
+  }
+  function addType(name) {
+    var t = (name || '').trim();
+    if (!t) return;
+    if (t.toLowerCase() === 'rest') return;
+    if (state.templates[t]) return;
+    state.templates[t] = [];
+    saveState();
+    renderApp();
+  }
+  function deleteType(name) {
+    delete state.templates[name];
+    Object.keys(state.schedule).forEach(function (d) { if (state.schedule[d] === name) state.schedule[d] = 'Rest'; });
+    if (ui.overrideType === name) ui.overrideType = null;
+    saveState();
+    renderApp();
+  }
+  function addExercise(type, ex) {
+    state.templates[type] = (state.templates[type] || []).concat([{ id: uid(), name: ex.name, sets: ex.sets, reps: ex.reps }]);
+    saveState();
+    renderApp();
+  }
+  function deleteExercise(type, id) {
+    state.templates[type] = (state.templates[type] || []).filter(function (e) { return e.id !== id; });
+    saveState();
+    renderApp();
+  }
+  function setScheduleDay(day, type) {
+    state.schedule[day] = type;
+    saveState();
+    renderApp();
+  }
+  function clearLogs() {
+    state.logs = [];
+    saveState();
+    renderApp();
+  }
+
+  /* ---------------- timer ---------------- */
+  function fireDone() {
+    timer.flash = true;
+    setTimeout(function () { timer.flash = false; updateTimerDom(); }, 4000);
+    try {
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      var ctx = new Ctx();
+      var beep = function (freq, start, dur) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.value = freq; o.type = 'sine';
+        o.connect(g); g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.2, ctx.currentTime + start);
+        o.start(ctx.currentTime + start); o.stop(ctx.currentTime + start + dur);
+      };
+      beep(880, 0, 0.15); beep(880, 0.2, 0.15); beep(1100, 0.4, 0.25);
+    } catch (e) { /* ignore */ }
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    updateTimerDom();
+  }
+  function startTimer(seconds) {
+    clearInterval(timer.intervalId);
+    timer.duration = seconds; timer.remaining = seconds; timer.running = true; timer.flash = false;
+    state.lastTimerDuration = seconds; saveState();
+    tickTimer();
+    renderApp();
+  }
+  function pauseTimer() { timer.running = false; clearInterval(timer.intervalId); renderApp(); }
+  function resumeTimer() { if (timer.remaining > 0) { timer.running = true; tickTimer(); renderApp(); } }
+  function resetTimer() { timer.running = false; clearInterval(timer.intervalId); timer.remaining = timer.duration; timer.flash = false; renderApp(); }
+  function tickTimer() {
+    clearInterval(timer.intervalId);
+    timer.intervalId = setInterval(function () {
+      timer.remaining -= 1;
+      if (timer.remaining <= 0) {
+        timer.remaining = 0; timer.running = false;
+        clearInterval(timer.intervalId);
+        fireDone();
+      }
+      updateTimerDom();
+    }, 1000);
+  }
+  function updateTimerDom() {
+    var clockEl = document.getElementById('timer-clock');
+    if (clockEl) { clockEl.textContent = fmtClock(timer.remaining); clockEl.style.color = timer.flash ? '#E8B931' : '#EDE8DA'; }
+    var ring = document.getElementById('timer-ring-progress');
+    if (ring) {
+      var R = 90, CIRC = 2 * Math.PI * R;
+      var pct = timer.duration > 0 ? timer.remaining / timer.duration : 0;
+      ring.setAttribute('stroke-dashoffset', CIRC * (1 - pct));
+      ring.setAttribute('stroke', timer.flash ? '#E8B931' : '#C8362B');
+    }
+    var goEl = document.getElementById('timer-go');
+    if (goEl) goEl.style.display = timer.flash ? 'block' : 'none';
+    var banner = document.getElementById('rest-banner');
+    if (banner) { var bt = banner.querySelector('.banner-time'); if (bt) bt.textContent = fmtClock(timer.remaining); }
+  }
+
+  /* ---------------- rendering ---------------- */
+  function renderApp() {
+    var root = document.getElementById('app');
+    var dayKey = todayKey();
+    var scheduledType = state.schedule[dayKey] || 'Rest';
+    var activeType = getActiveType();
+    var timerActive = timer.running || (timer.remaining > 0 && timer.remaining < timer.duration);
+
+    var html = '';
+    html += topbarHtml();
+    if (ui.tab !== 'timer' && timerActive) {
+      html += '<div class="banner" id="rest-banner" data-action="set-tab" data-tab="timer">' +
+        '<span>\u23F1 Resting \u00B7 <span class="banner-time font-mono">' + fmtClock(timer.remaining) + '</span></span>' +
+        '<span style="color:var(--chalk)">View \u2192</span></div>';
+    }
+    if (ui.tab === 'today') html += renderToday(dayKey, scheduledType, activeType);
+    else if (ui.tab === 'timer') html += renderTimer();
+    else if (ui.tab === 'plan') html += renderPlan();
+    else if (ui.tab === 'history') html += renderHistory();
+    html += navbarHtml();
+
+    root.innerHTML = html;
+  }
+
+  function topbarHtml() {
+    return '<div class="topbar"><div class="font-display brandtitle">IRON LOG</div>' +
+      '<div class="font-mono" style="font-size:0.7rem;color:var(--chalkDim)">' + fmtDate(todayDateStr()) + '</div></div>';
+  }
+  function navbarHtml() {
+    function item(tab, label, icon) {
+      return '<button class="navitem' + (ui.tab === tab ? ' active' : '') + '" data-action="set-tab" data-tab="' + tab + '">' +
+        '<span class="navicon">' + icon + '</span><span>' + label + '</span></button>';
+    }
+    return '<div class="navbar">' +
+      item('today', 'Today', '\uD83C\uDFCB\uFE0F') +
+      item('timer', 'Timer', '\u23F1\uFE0F') +
+      item('plan', 'Plan', '\uD83D\uDCCB') +
+      item('history', 'History', '\uD83D\uDCDC') +
+      '</div>';
+  }
+
+  function renderToday(dayKey, scheduledType, activeType) {
+    var typeNames = Object.keys(state.templates);
+    var exercises = state.templates[activeType] || [];
+    var draftEntries = (state.draft && state.draft.date === todayDateStr() && state.draft.type === activeType) ? state.draft.entries : {};
+    var totalSets = 0;
+    Object.keys(draftEntries).forEach(function (k) { totalSets += draftEntries[k].length; });
+
+    var html = '<div class="screen">';
+    html += '<div class="flex items-center justify-between" style="margin-bottom:4px">' +
+      '<div><div class="eyebrow">' + DAY_FULL[dayKey] + '</div>' +
+      '<div class="font-display" style="font-size:2rem;color:' + (activeType === 'Rest' ? 'var(--chalkDim)' : 'var(--brass)') + '">' +
+      (activeType === 'Rest' ? 'Rest Day' : activeType.toUpperCase() + ' DAY') + '</div></div>' +
+      '<span style="font-size:1.6rem">\uD83C\uDFCB\uFE0F</span></div>';
+
+    html += '<div class="flex flex-wrap gap-2" style="margin:12px 0 18px">';
+    ['Rest'].concat(typeNames).forEach(function (t) {
+      html += '<button class="pill' + (t === activeType ? ' active' : '') + '" data-action="set-override" data-type="' + escapeHtml(t) + '" data-scheduled="' + escapeHtml(scheduledType) + '">' + escapeHtml(t) + '</button>';
+    });
+    html += '</div>';
+
+    if (activeType === 'Rest') {
+      html += '<div class="card" style="text-align:center;padding:32px 16px">' +
+        '<div style="font-size:1.8rem;margin-bottom:8px">\uD83D\uDECC</div>' +
+        '<div class="font-display" style="font-size:1.3rem;color:var(--chalk)">Recovery is training too</div>' +
+        '<div style="font-size:0.82rem;color:var(--chalkDim);margin-top:4px">No session scheduled today. Tap a day above if you want to train anyway.</div></div>';
+    } else if (exercises.length === 0) {
+      html += '<div class="card" style="text-align:center;color:var(--chalkDim);font-size:0.85rem">No exercises in this workout yet. Add some from the Plan tab.</div>';
+    } else {
+      exercises.forEach(function (ex) {
+        html += renderExerciseCard(ex, draftEntries[ex.id] || []);
+      });
+    }
+
+    if (totalSets > 0) {
+      html += '<button class="btn-finish" data-action="finish-workout">Finish workout \u00B7 ' + totalSets + ' set' + (totalSets !== 1 ? 's' : '') + ' logged</button>';
+    }
+    html += '<div style="height:12px"></div></div>';
+    return html;
+  }
+
+  function renderExerciseCard(ex, draftSets) {
+    var best = getBest(ex.name);
+    var last = getLast(ex.name);
+    var seedWeight = last ? last.sets[last.sets.length - 1].weight : (best ? best.weight : 25);
+    var seedReps = last ? last.sets[last.sets.length - 1].reps : (best ? best.reps : 10);
+    var wid = 'w-' + ex.id, rid = 'r-' + ex.id;
+
+    var html = '<div class="card">';
+    html += '<div class="flex items-center justify-between">' +
+      '<div class="font-display" style="font-size:1.25rem;color:var(--chalk)">' + escapeHtml(ex.name) + '</div>' +
+      '<div class="font-mono" style="font-size:0.72rem;color:var(--chalkDim)">' + ex.sets + ' \u00D7 ' + escapeHtml(ex.reps) + '</div></div>';
+
+    html += '<div class="flex items-center gap-3" style="margin:4px 0 10px">';
+    if (best) html += '<div class="flex items-center gap-1" style="font-size:0.72rem;color:var(--brass)">\uD83D\uDD25 <span class="font-mono">' + best.weight + ' \u00D7 ' + best.reps + '</span></div>';
+    if (last) html += '<div style="font-size:0.72rem;color:var(--chalkDim)">last: <span class="font-mono">' + last.sets[last.sets.length - 1].weight + ' \u00D7 ' + last.sets[last.sets.length - 1].reps + '</span></div>';
+    html += '</div>';
+
+    if (draftSets.length > 0) {
+      html += '<div class="flex flex-wrap gap-2" style="margin-bottom:10px">';
+      draftSets.forEach(function (s, i) {
+        html += '<div class="chip"><span class="font-mono">' + s.weight + ' \u00D7 ' + s.reps + '</span>' +
+          '<button data-action="remove-set" data-ex="' + ex.id + '" data-idx="' + i + '">\u00D7</button></div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div class="flex items-end gap-3">' +
+      stepperHtml(wid, seedWeight, 5, 0, 'LBS') +
+      stepperHtml(rid, seedReps, 1, 0, 'REPS') +
+      '<button class="btn-primary" style="margin-left:auto" data-action="log-set" data-ex="' + ex.id + '" data-w="' + wid + '" data-r="' + rid + '">Log set</button>' +
+      '</div></div>';
+    return html;
+  }
+
+  function stepperHtml(id, value, step, min, label) {
+    return '<div class="stepper">' +
+      '<div class="stepper-label">' + label + '</div>' +
+      '<div class="stepper-row">' +
+      '<button data-action="step" data-target="' + id + '" data-step="-' + step + '" data-min="' + min + '">\u2212</button>' +
+      '<input type="number" inputmode="decimal" id="' + id + '" value="' + value + '">' +
+      '<button data-action="step" data-target="' + id + '" data-step="' + step + '" data-min="' + min + '">+</button>' +
+      '</div></div>';
+  }
+
+  function renderTimer() {
+    var R = 90, CIRC = 2 * Math.PI * R;
+    var pct = timer.duration > 0 ? timer.remaining / timer.duration : 0;
+    var offset = CIRC * (1 - pct);
+    var holes = '';
+    for (var i = 0; i < 8; i++) {
+      var ang = (i / 8) * 2 * Math.PI;
+      var x = 110 + (R - 26) * Math.cos(ang);
+      var y = 110 + (R - 26) * Math.sin(ang);
+      holes += '<circle cx="' + x + '" cy="' + y + '" r="3.5" fill="var(--line)"/>';
+    }
+    var html = '<div class="screen" style="align-items:center;text-align:center">';
+    html += '<div class="font-display" style="font-size:1.4rem;color:var(--chalkDim);margin-top:8px">REST TIMER</div>';
+    html += '<div style="position:relative;width:220px;height:220px;margin:18px auto">';
+    html += '<svg width="220" height="220" viewBox="0 0 220 220">' +
+      '<circle cx="110" cy="110" r="' + R + '" fill="none" stroke="var(--panel2)" stroke-width="14"/>' +
+      '<circle id="timer-ring-progress" cx="110" cy="110" r="' + R + '" fill="none" stroke="' + (timer.flash ? '#E8B931' : '#C8362B') + '" stroke-width="14" stroke-linecap="round" stroke-dasharray="' + CIRC + '" stroke-dashoffset="' + offset + '" transform="rotate(-90 110 110)" style="transition:stroke-dashoffset 1s linear, stroke 0.3s"/>' +
+      holes + '</svg>';
+    html += '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column">' +
+      '<div id="timer-clock" class="font-mono" style="font-size:2.6rem;color:' + (timer.flash ? 'var(--brass)' : 'var(--chalk)') + '">' + fmtClock(timer.remaining) + '</div>' +
+      '<div id="timer-go" style="font-size:0.75rem;color:var(--brass);letter-spacing:0.1em;display:' + (timer.flash ? 'block' : 'none') + '">GO!</div>' +
+      '</div></div>';
+
+    html += '<div class="flex items-center justify-center gap-3" style="margin-bottom:18px">';
+    if (!timer.running && timer.remaining === timer.duration) {
+      html += '<button class="btn-primary" data-action="timer-start" data-seconds="' + timer.duration + '">\u25B6 Start</button>';
+    } else if (!timer.running && timer.remaining > 0 && timer.remaining < timer.duration) {
+      html += '<button class="btn-primary" data-action="timer-resume">\u25B6 Resume</button>';
+    } else if (timer.running) {
+      html += '<button class="btn-primary" data-action="timer-pause">\u23F8 Pause</button>';
+    }
+    html += '<button class="btn-ghost" data-action="timer-reset">\u21BA Reset</button></div>';
+
+    html += '<div class="eyebrow" style="margin-bottom:8px">Quick set</div>';
+    html += '<div class="flex items-center justify-center gap-2" style="margin-bottom:16px">';
+    [30, 60, 90, 120, 180].forEach(function (s) {
+      html += '<button class="pill' + (s === timer.duration ? ' active' : '') + '" data-action="timer-start" data-seconds="' + s + '">' + s + 's</button>';
+    });
+    html += '</div>';
+
+    html += '<div class="flex items-center justify-center gap-2">' +
+      '<input type="number" inputmode="numeric" id="timer-custom" value="' + timer.duration + '" style="width:70px" class="text-input">' +
+      '<button class="btn-ghost" data-action="timer-custom-set">Set custom</button></div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderPlan() {
+    var typeNames = Object.keys(state.templates);
+    var html = '<div class="screen">';
+    html += '<div class="font-display" style="font-size:1.5rem;color:var(--chalk);margin-bottom:10px">Weekly Schedule</div>';
+    html += '<div class="card">';
+    DAYS.forEach(function (d, idx) {
+      html += '<div style="padding:10px 0;border-top:' + (idx === 0 ? 'none' : '1px solid var(--line)') + '">';
+      html += '<div style="font-size:0.82rem;color:var(--chalk);margin-bottom:6px">' + DAY_FULL[d] + '</div>';
+      html += '<div class="flex flex-wrap gap-2">';
+      ['Rest'].concat(typeNames).forEach(function (t) {
+        html += '<button class="pill' + (state.schedule[d] === t ? ' active' : '') + '" data-action="schedule-set" data-day="' + d + '" data-type="' + escapeHtml(t) + '">' + escapeHtml(t) + '</button>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div>';
+
+    html += '<div class="font-display" style="font-size:1.5rem;color:var(--chalk);margin:22px 0 10px">Workout Types</div>';
+    typeNames.forEach(function (t) {
+      html += renderTypeCard(t);
+    });
+
+    html += '<div class="card">' +
+      '<div style="font-size:0.78rem;color:var(--chalkDim);margin-bottom:8px">New workout type (e.g. Arms, Cardio)</div>' +
+      '<div class="flex gap-2">' +
+      '<input class="text-input" style="flex:1" id="new-type-input" placeholder="Type name">' +
+      '<button class="btn-primary" data-action="add-type-submit">+</button></div></div>';
+    html += '<div style="height:12px"></div></div>';
+    return html;
+  }
+
+  function renderTypeCard(name) {
+    var exercises = state.templates[name] || [];
+    var armedKey = 'del-type-' + name;
+    var armed = !!ui.armed[armedKey];
+    var html = '<div class="card">';
+    html += '<div class="flex items-center justify-between">' +
+      '<div class="font-display" style="font-size:1.15rem;color:var(--chalk)">' + escapeHtml(name) + '</div>' +
+      '<button class="iconbtn" data-action="confirm" data-key="' + escapeHtml(armedKey) + '" data-confirm-action="delete-type" data-type="' + escapeHtml(name) + '" style="color:' + (armed ? 'var(--rust)' : 'var(--chalkDim)') + '">' +
+      (armed ? '\uD83D\uDDD1 Tap again' : '\uD83D\uDDD1 delete') + '</button></div>';
+
+    if (exercises.length === 0) html += '<div style="font-size:0.78rem;color:var(--chalkDim);margin-top:6px">No exercises yet.</div>';
+    exercises.forEach(function (ex) {
+      html += '<div class="flex items-center justify-between" style="padding:8px 0;border-top:1px solid var(--line)">' +
+        '<div><div style="font-size:0.88rem;color:var(--chalk)">' + escapeHtml(ex.name) + '</div>' +
+        '<div class="font-mono" style="font-size:0.68rem;color:var(--chalkDim)">' + ex.sets + ' \u00D7 ' + escapeHtml(ex.reps) + '</div></div>' +
+        '<button class="iconbtn" data-action="delete-exercise" data-type="' + escapeHtml(name) + '" data-id="' + ex.id + '">\uD83D\uDDD1</button></div>';
+    });
+
+    var formOpen = !!ui.addFormOpen[name];
+    var slug = typeSlug(name);
+    if (!formOpen) {
+      html += '<button class="btn-ghost" style="width:100%;margin-top:8px" data-action="toggle-add-exercise" data-type="' + escapeHtml(name) + '">+ Add exercise</button>';
+    } else {
+      html += '<div class="flex flex-col gap-2" style="margin-top:10px">' +
+        '<input class="text-input" id="newex-name-' + slug + '" placeholder="Exercise name">' +
+        '<div class="flex gap-2">' +
+        '<input class="text-input" style="width:70px" type="number" inputmode="numeric" id="newex-sets-' + slug + '" value="3">' +
+        '<input class="text-input" style="flex:1" id="newex-reps-' + slug + '" placeholder="reps e.g. 8-12" value="8-12">' +
+        '</div><div class="flex gap-2">' +
+        '<button class="btn-primary" style="flex:1" data-action="add-exercise-submit" data-type="' + escapeHtml(name) + '">Save</button>' +
+        '<button class="btn-ghost" data-action="toggle-add-exercise" data-type="' + escapeHtml(name) + '">Cancel</button>' +
+        '</div></div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderHistory() {
+    var bestMap = {};
+    state.logs.forEach(function (l) {
+      l.exercises.forEach(function (e) {
+        e.sets.forEach(function (s) {
+          var b = bestMap[e.name];
+          if (!b || s.weight > b.weight || (s.weight === b.weight && s.reps > b.reps)) bestMap[e.name] = { weight: s.weight, reps: s.reps };
+        });
+      });
+    });
+    var prNames = Object.keys(bestMap).sort();
+
+    var html = '<div class="screen">';
+    html += '<div class="font-display" style="font-size:1.5rem;color:var(--chalk);margin-bottom:10px">Personal Records</div>';
+    if (prNames.length === 0) {
+      html += '<div class="card" style="color:var(--chalkDim);font-size:0.85rem">Log a workout to start tracking PRs.</div>';
+    } else {
+      html += '<div class="card">';
+      prNames.forEach(function (name, i) {
+        var p = bestMap[name];
+        html += '<div class="flex items-center justify-between" style="padding:7px 0;border-top:' + (i === 0 ? 'none' : '1px solid var(--line)') + '">' +
+          '<span style="font-size:0.85rem;color:var(--chalk)">' + escapeHtml(name) + '</span>' +
+          '<span class="flex items-center gap-1 font-mono" style="font-size:0.82rem;color:var(--brass)">\uD83D\uDD25 ' + p.weight + ' \u00D7 ' + p.reps + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div class="font-display" style="font-size:1.5rem;color:var(--chalk);margin:22px 0 10px">Workout Log</div>';
+    if (state.logs.length === 0) {
+      html += '<div class="card" style="color:var(--chalkDim);font-size:0.85rem">No workouts logged yet. Finish a session from Today to see it here.</div>';
+    }
+    state.logs.forEach(function (l) {
+      html += renderLogCard(l);
+    });
+
+    if (state.logs.length > 0) {
+      var armed = !!ui.armed['clear-logs'];
+      html += '<div style="margin-top:16px;text-align:center">' +
+        '<button class="iconbtn" data-action="confirm" data-key="clear-logs" data-confirm-action="clear-logs" style="color:' + (armed ? 'var(--rust)' : 'var(--chalkDim)') + '">' +
+        (armed ? '\uD83D\uDDD1 Tap again' : '\uD83D\uDDD1 Clear workout history') + '</button></div>';
+    }
+    html += '<div style="height:12px"></div></div>';
+    return html;
+  }
+
+  function renderLogCard(entry) {
+    var open = !!ui.openLogs[entry.id];
+    var totalSets = 0;
+    entry.exercises.forEach(function (e) { totalSets += e.sets.length; });
+    var html = '<div class="card">';
+    html += '<button class="flex items-center justify-between" style="width:100%;background:none;border:none;padding:0" data-action="toggle-log" data-id="' + entry.id + '">' +
+      '<div style="text-align:left"><div style="font-size:0.95rem;color:var(--chalk)">' + fmtDate(entry.date) + '</div>' +
+      '<div style="font-size:0.72rem;color:var(--chalkDim)">' + escapeHtml(entry.type) + ' \u00B7 ' + totalSets + ' sets</div></div>' +
+      '<span style="color:var(--chalkDim)">' + (open ? '\u25B2' : '\u25BC') + '</span></button>';
+    if (open) {
+      html += '<div style="margin-top:10px">';
+      entry.exercises.forEach(function (e) {
+        html += '<div style="padding:6px 0;border-top:1px solid var(--line)">' +
+          '<div style="font-size:0.85rem;color:var(--chalk)">' + escapeHtml(e.name) + '</div>' +
+          '<div class="flex flex-wrap gap-2" style="margin-top:4px">';
+        e.sets.forEach(function (s) {
+          html += '<span class="font-mono" style="font-size:0.74rem;color:var(--chalkDim)">' + s.weight + '\u00D7' + s.reps + '</span>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  /* ---------------- event delegation ---------------- */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-action]');
+    if (!t) return;
+    var action = t.getAttribute('data-action');
+
+    if (action === 'set-tab') { ui.tab = t.getAttribute('data-tab'); renderApp(); }
+    else if (action === 'set-override') {
+      var type = t.getAttribute('data-type');
+      var scheduled = t.getAttribute('data-scheduled');
+      ui.overrideType = (type === scheduled) ? null : type;
+      renderApp();
+    }
+    else if (action === 'step') {
+      var target = document.getElementById(t.getAttribute('data-target'));
+      var step = Number(t.getAttribute('data-step'));
+      var min = Number(t.getAttribute('data-min'));
+      var cur = Number(target.value) || 0;
+      var next = Math.max(min, round1(cur + step));
+      target.value = next;
+    }
+    else if (action === 'log-set') {
+      var exId = t.getAttribute('data-ex');
+      var wEl = document.getElementById(t.getAttribute('data-w'));
+      var rEl = document.getElementById(t.getAttribute('data-r'));
+      var exercise = findExerciseById(exId);
+      if (exercise) logSet(exercise, wEl.value, rEl.value);
+    }
+    else if (action === 'remove-set') {
+      removeSet(t.getAttribute('data-ex'), Number(t.getAttribute('data-idx')));
+    }
+    else if (action === 'finish-workout') { finishWorkout(); }
+    else if (action === 'timer-start') { startTimer(Number(t.getAttribute('data-seconds'))); }
+    else if (action === 'timer-pause') { pauseTimer(); }
+    else if (action === 'timer-resume') { resumeTimer(); }
+    else if (action === 'timer-reset') { resetTimer(); }
+    else if (action === 'timer-custom-set') {
+      var cv = Number(document.getElementById('timer-custom').value);
+      if (cv > 0) startTimer(cv);
+    }
+    else if (action === 'schedule-set') { setScheduleDay(t.getAttribute('data-day'), t.getAttribute('data-type')); }
+    else if (action === 'toggle-add-exercise') {
+      var ty = t.getAttribute('data-type');
+      ui.addFormOpen[ty] = !ui.addFormOpen[ty];
+      renderApp();
+    }
+    else if (action === 'add-exercise-submit') {
+      var ty2 = t.getAttribute('data-type');
+      var slug = typeSlug(ty2);
+      var nameEl = document.getElementById('newex-name-' + slug);
+      var setsEl = document.getElementById('newex-sets-' + slug);
+      var repsEl = document.getElementById('newex-reps-' + slug);
+      var nm = nameEl.value.trim();
+      if (nm) {
+        addExercise(ty2, { name: nm, sets: Number(setsEl.value) || 3, reps: repsEl.value || '8-12' });
+        ui.addFormOpen[ty2] = false;
+        renderApp();
+      }
+    }
+    else if (action === 'delete-exercise') { deleteExercise(t.getAttribute('data-type'), t.getAttribute('data-id')); }
+    else if (action === 'add-type-submit') {
+      var nt = document.getElementById('new-type-input');
+      addType(nt.value);
+    }
+    else if (action === 'confirm') {
+      var key = t.getAttribute('data-key');
+      var cAction = t.getAttribute('data-confirm-action');
+      if (ui.armed[key]) {
+        clearTimeout(ui.armed[key + '-timeout']);
+        delete ui.armed[key];
+        if (cAction === 'delete-type') deleteType(t.getAttribute('data-type'));
+        else if (cAction === 'clear-logs') clearLogs();
+      } else {
+        ui.armed[key] = true;
+        var k = key;
+        ui.armed[key + '-timeout'] = setTimeout(function () { delete ui.armed[k]; renderApp(); }, 2200);
+        renderApp();
+      }
+    }
+    else if (action === 'toggle-log') {
+      var id = t.getAttribute('data-id');
+      ui.openLogs[id] = !ui.openLogs[id];
+      renderApp();
+    }
+  });
+
+  /* ---------------- init ---------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.title = 'Iron Log';
+    renderApp();
+  });
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    renderApp();
+  }
+
+})();
+
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () { /* ignore on unsupported hosts */ });
+    });
+  }
+</script>
+</body>
+</html>
